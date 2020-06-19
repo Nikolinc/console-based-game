@@ -1,5 +1,5 @@
 from src.character.player import Player
-from src.character.class_.standart import Warrior, Wizard
+from src.character.class_.standart import Warrior, Wizard, Assassin, Cleric, Archer, Paladin, Witcher
 from .notification import ShowPlayerStats
 from . import BaseScene, Quit
 
@@ -37,11 +37,21 @@ class PlayerClassChoice(BaseScene):
 			'Выбор класса:',
 			'1. Warrior',
 			'2. Mage',
+			'3. Assassin',
+			'4. Cleric',
+			'5. Archer',
+			'6. Paladin',
+			'7. Witcher',
 		]
 		self.interface.print(text, delay=0.2)
 		valid_answers = {
                     1: ['1', 'warrior'],
                     2: ['2', 'mage', 'wizard'],
+                    3: ['3', 'Assassin'],
+                    4: ['4', 'Cleric'],
+                    5: ['5', 'Archer'],
+                    6: ['6', 'Paladin'],
+                    7: ['7', 'Witcher'],
 		}
 		question = self.interface.create_readable_text(valid_answers)
 		answer = self.interface.ask(question, valid_answers)
@@ -49,4 +59,14 @@ class PlayerClassChoice(BaseScene):
 			game.player = Player(Warrior())
 		elif answer == 2:
 			game.player = Player(Wizard())
+		elif answer == 3:
+			game.player = Player(Assassin())
+		elif answer == 4:
+			game.player = Player(Cleric())
+		elif answer == 5:
+			game.player = Player(Archer())
+		elif answer == 6:
+			game.player = Player(Paladin())
+		elif answer == 7:
+			game.player = Player(Witcher())
 		game.scene = ShowPlayerStats()
